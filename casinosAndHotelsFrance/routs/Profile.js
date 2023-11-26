@@ -79,20 +79,20 @@ const Profile = () => {
                                     {/** Add plases where i'm been block*/}
                                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: 250, marginBottom: 15 }}>
                                         <TouchableOpacity
-                                            style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 120, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#e9c860', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                            style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 120, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#0c1e3b', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                         //onPress={() => setUserName(writingUsername)}
                                         >
-                                            <Text style={{ fontWeight: 'bold', fontSize: 20, marginRight: 10 }}>Add</Text>
-                                            <MaterialIcons name='casino' style={{ color: '#0c1e3b', fontSize: 40 }} />
+                                            <Text style={{ fontWeight: 'bold', fontSize: 20, marginRight: 10 , color: '#e9c860'}}>Add</Text>
+                                            <MaterialIcons name='casino' style={{ color: '#e9c860', fontSize: 40 }} />
                     
                                         </TouchableOpacity>
                                         
                                         <TouchableOpacity
-                                            style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 120, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#e9c860', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                            style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 120, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#0c1e3b', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                         //onPress={() => setUserName(writingUsername)}
                                         >
-                                            <Text style={{ fontWeight: 'bold', fontSize: 20, marginRight: 10 }}>Add</Text>
-                                            <FontAwesome5 name='hotel' style={{ color: '#0c1e3b', fontSize: 30 }} />
+                                            <Text style={{ fontWeight: 'bold', fontSize: 20, marginRight: 10 , color: '#e9c860'}}>Add</Text>
+                                            <FontAwesome5 name='hotel' style={{ color: '#e9c860', fontSize: 30 }} />
                     
                                         </TouchableOpacity>
                                     </View>
@@ -128,7 +128,7 @@ const Profile = () => {
                                         <Switch
                                             style={{ width: 100, borderWidth: 2, borderColor: '#0c1e3b', borderRadius: 15, width: 52 }}
                                             trackColor={{ false: '#81b0ff', true: '#767577' }}
-                                            thumbColor={'#f5dd4b'}
+                                            thumbColor={'#0c1e3b'}
                                             
                                             //onValueChange={toggleSwitch}
                                             //value={isEnabled}
