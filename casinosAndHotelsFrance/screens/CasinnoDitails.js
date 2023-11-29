@@ -5,13 +5,51 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { uid } from 'uid';
 import MapView from 'react-native-maps';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const CasinoDitails = ({ navigation, route }) => {
+    const [selectPhoto, setSelectPhoto] = useState(null);
     const [plase, setPlase] = useState(route.params);
     const { hotel, numberOfRooms, location, description, photo, longitude, latitude } = plase;
     console.log('plase==>', plase);
+
+       useEffect(() => {
+        getData(); // дані завантажені з AsyncStorage
+    }, []);
+
+    useEffect(() => {
+        setData(); // Запис даних у AsyncStorage при зміні bankName, info або photo
+    }, [selectPhoto]);
+
+      const setData = async () => {
+        try {
+            const data = {
+                selectPhoto,
+            }
+            const jsonData = JSON.stringify(data);
+            await AsyncStorage.setItem("photoFromCasinoDitails", jsonData);
+            console.log('Дані збережено AsyncStorage на CasinoHome')
+        } catch (e) {
+            console.log('Помилка збереження даних:', e);
+        }
+    };
+
+    const getData = async () => {
+        try {
+            const jsonData = await AsyncStorage.getItem('photoFromCasinoDitails');
+            if (jsonData !== null) {
+                const parsedData = JSON.parse(jsonData);
+                console.log('parsedData==>', parsedData);
+                setSelectPhoto(parsedData.selectPhoto);
+            }
+        } catch (e) {
+            console.log('Помилка отримання даних:', e);
+        }
+    };
+
 
     {/** ANIMATION */}
 const [loaderIsLoaded, setLoaderIsLoaded] = useState(false);
@@ -47,7 +85,28 @@ const ChangeInView = props => {
     
     );
 };
-///////////////////////////////////////////// borderTopWidth:5,borderColor: 'rgba(233, 200, 96, 0.8)',
+    ///////////////////////////////////////////// borderTopWidth:5,borderColor: 'rgba(233, 200, 96, 0.8)',
+
+     const ImagePicer = () => {
+        let options = {
+            storageOptios: {
+                path: 'image',
+            }
+        };
+        
+        launchImageLibrary(options, response => {
+            if (!response.didCancel) {
+                console.log('response==>', response.assets[0].uri);
+                
+                //const newSelectedPhotos = [...selectPhoto, { sel: response.assets[0].uri }];
+                //console.log('newSelectedPhotos==>', newSelectedPhotos)
+                setSelectPhoto(response.assets[0].uri);
+
+            } else {
+                console.log('Вибір скасовано');
+            }
+        });
+    };
 
     return (
         <View style={{ flex: 1, position: 'relative', backgroundColor: '#0c1e3b' }}>
@@ -90,9 +149,16 @@ const ChangeInView = props => {
                                             />
                                         )
                                     })}
+                                        
+                                        {selectPhoto &&
+                        <Image
+                            style={{ width: '48%', height: 100, borderRadius: 10, }}
+                            source={{ uri: selectPhoto }} />
+                    }
+                                        
                                     <TouchableOpacity
                                         onPress={() => {
-                                            //ImagePicer()
+                                            ImagePicer()
                                         }}
                                         style={{
                                             borderWidth: 2,

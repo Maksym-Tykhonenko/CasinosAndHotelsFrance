@@ -1,21 +1,57 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import {TextInput, View, Text, ImageBackground, ScrollView, TouchableOpacity, Modal, Dimensions } from "react-native";
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { casino } from "../data/casino";
 import { uid } from "uid";
 
-const CasinoHome = ({navigation}) => {
+const CasinoHome = ({ navigation }) => {
+    
     const [casinos, setCasinos] = useState([]);
     console.log('casinos==>', casinos)
-
     /////////// Modal code
     const [modalAddHotelsVisible, setModalAddHotelsVisible] = useState(false);
     const [hotelName, setHotelName] = useState('');
     const [hotelAddress, setHotelAddress] = useState('');
     const [description, setDescription] = useState('');
     const [qwantityOfRooms, setQwantityOfRooms] = useState();
+
+    useEffect(() => {
+        getData(); // дані завантажені з AsyncStorage
+    }, []);
+
+    useEffect(() => {
+        setData(); // Запис даних у AsyncStorage при зміні bankName, info або photo
+    }, [casinos]);
+
+    const setData = async () => {
+        try {
+            const data = {
+                casinos,
+            }
+            const jsonData = JSON.stringify(data);
+            await AsyncStorage.setItem("casinos", jsonData);
+            console.log('Дані збережено AsyncStorage на CasinoHome')
+        } catch (e) {
+            console.log('Помилка збереження даних:', e);
+        }
+    };
+
+    const getData = async () => {
+        try {
+            const jsonData = await AsyncStorage.getItem('casinos');
+            if (jsonData !== null) {
+                const parsedData = JSON.parse(jsonData);
+                console.log('parsedData==>', parsedData);
+                setCasinos(parsedData.casinos);
+            }
+        } catch (e) {
+            console.log('Помилка отримання даних:', e);
+        }
+    };
+
 
     const handlAddHotel = () => {
         let newHotel = {
@@ -43,6 +79,7 @@ const CasinoHome = ({navigation}) => {
     };
 
 
+
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground
@@ -57,11 +94,11 @@ const CasinoHome = ({navigation}) => {
                             <View>
                         
                                 <View>
-                                    {casinos && casinos.map(({hotel, numberOfRooms, location, description, id}) => {
+                                    {casinos ? (casinos.map(({hotel, qwantityOfRooms, location, description, id}) => {
                                         return (
                                             <TouchableOpacity
                                                 onPress={() => {
-                                                    navigation.navigate('NewCasinoDitails', { hotel, numberOfRooms, location, description, })
+                                                    navigation.navigate('NewCasinoDitails', { hotel, qwantityOfRooms, location, description, })
                                                 }}
                                                 style={{ height: 50, backgroundColor: 'rgba(233, 200, 96, 0.8)', marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderRadius: 15, shadowColor: '#e9c860', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                                 key={id}
@@ -69,7 +106,11 @@ const CasinoHome = ({navigation}) => {
                                                 <Text style={{ color: '#081f41', fontWeight: 'bold', }}>{hotel}</Text>
                                             </TouchableOpacity>
                                         )
-                                    })}
+                                    })) : (
+                                            <View></View>
+                                    )
+                                }
+
                                     {casino.map(({ id, hotel, numberOfRooms, location, description, photo, latitude, longitude }) => {
                                         return (
                                             <TouchableOpacity
@@ -93,11 +134,12 @@ const CasinoHome = ({navigation}) => {
                             <Entypo name='circle-with-plus' style={{ color: '#e9c860', fontSize: 33 }} />
                         </TouchableOpacity>
 
+                        {/**
                         <TouchableOpacity
                             
                             style={{ position: 'absolute', left: -30, top: -15 }}>
                             <AntDesign name="calculator" style={{ color: '#e9c860', fontSize: 33 }} />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
 
                 </View>
