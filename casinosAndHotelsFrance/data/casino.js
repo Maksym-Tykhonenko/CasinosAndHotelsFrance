@@ -19,7 +19,7 @@ export const casino = [
         description: `Located near Paris, this hotel is set around a picturesque lake. It provides a peaceful atmosphere, a spa, and a casino for entertainment.`,
         numberOfRooms: 164,
         photo: [
-            { pict: require('../accets/hotelsPhoto/BarrireLHtelduLacEnghien-les-Bains.jpeg'), },
+            { pict: require('../accets/CASINOBARRIREENGHIENLESBAINS.jpg'), },
             { pict: require('../accets/hotelsPhoto/BarrireLHtelduLacEnghien-les-Bains2.jpeg'), },
         ],
         latitude: 48.969942733545075,
@@ -59,7 +59,7 @@ export const casino = [
         description: 'Nestled in the charming town of Le Touquet, this hotel exudes elegance and offers a combination of classic and contemporary design. The casino complements the upscale experience.',
         numberOfRooms: 115,
         photo: [
-            { pict: require('../accets/hotelsPhoto/BarrireLeWestminsterLeTouquet.jpeg'), },
+            { pict: require('../accets/CASINOBARRIRELETOUQUET.jpg'), },
             { pict: require('../accets/hotelsPhoto/BarrireLeWestminsterLeTouquet2.jpeg'), },
         ],
         latitude: 50.52207550869151,
@@ -72,7 +72,7 @@ export const casino = [
         description: 'Overlooking the Promenade des Anglais, this hotel is a symbol of luxury on the French Riviera. It features well-appointed rooms and a casino with a diverse range of gaming options.',
         numberOfRooms: 331,
         photo: [
-            { pict: require('../accets/hotelsPhoto/BarrireRuhlNice.jpeg'), },
+            { pict: require('../accets/CASINO_BARRIRE_LE_RUHL-NICE.jpg'), },
             { pict: require('../accets/hotelsPhoto/BarrireRuhlNice2.jpeg'), },
         ],
         latitude: 43.69504702386672,

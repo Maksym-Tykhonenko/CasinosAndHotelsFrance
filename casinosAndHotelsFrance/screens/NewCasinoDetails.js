@@ -71,10 +71,10 @@ const NewCasinoDitails = ({ navigation, route }) => {
         }, []);
 
         return (
-            <View style={{ position: 'relative', flex: 1, backgroundColor: '#0c1e3b' }}>
+            <View style={{ position: 'relative', flex: 1, backgroundColor: '#000' }}>
 
                 <Animated.Image
-                    source={require('../accets/bgrImg.jpeg')}// Special animatable View
+                    source={require('../accets/backgr.jpg')}// Special animatable View
                     style={{
                         ...props.style,
                         opacity: appearingAnim,
@@ -124,7 +124,7 @@ const NewCasinoDitails = ({ navigation, route }) => {
             ) : (
                 <ImageBackground
                     style={{ flex: 1 }}
-                    source={require('../accets/bgrImg.jpeg')}
+                    source={require('../accets/backgr.jpg')}
                 >
                     <View style={{ flex: 1, borderRadius: 15, marginTop: 40, marginBottom: 30, marginHorizontal: 20, paddingHorizontal: 5, paddingVertical: 10, backgroundColor: 'rgba(233, 200, 96, 0.8)', shadowColor: '#e9c860', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}>
                             

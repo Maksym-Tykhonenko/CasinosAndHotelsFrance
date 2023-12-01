@@ -84,7 +84,7 @@ const CasinoHome = ({ navigation }) => {
         <View style={{ flex: 1 }}>
             <ImageBackground
                 style={{ flex: 1 }}
-                source={require('../accets/bgrImg.jpeg')}
+                source={require('../accets/backgr.jpg')}
             >
                 <View style={{ position: 'relative' }}>
                     <View style={{ marginTop: 40, marginRight: 40, marginLeft: 40, marginBottom: 40 }}>
@@ -155,7 +155,7 @@ const CasinoHome = ({ navigation }) => {
                             flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         }}>
                         <View style={{
-                            flex: 1, marginTop: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15, borderColor: '#e9c860', borderWidth: 1, backgroundColor: '#0c1e3b'
+                            flex: 1, marginTop: 100, borderTopLeftRadius: 15, borderTopRightRadius: 15, borderColor: '#e9c860', borderWidth: 1, backgroundColor: '#000'
                         }}>
 
                             <View style={{marginHorizontal: 10, marginVertical: 20}}>
@@ -187,6 +187,7 @@ const CasinoHome = ({ navigation }) => {
                                         />
 
                                 <TextInput
+                                    multiline={true}
                                             placeholderTextColor='rgba(233, 200, 96, 0.5)'
                                             placeholder="Description..."
                                             value={description}
@@ -195,12 +196,11 @@ const CasinoHome = ({ navigation }) => {
                                                 shadowOffset: { width: 3, height: 4 },
                                                 shadowOpacity: .8,
                                                 elevation: 9,
-                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 40
+                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 120
                                             }}
                                         />
 
                                 <TextInput
-                                    multiline={true}
                                             placeholderTextColor='rgba(233, 200, 96, 0.5)'
                                             placeholder="Number Of Rooms..."
                                             value={qwantityOfRooms}
@@ -209,7 +209,7 @@ const CasinoHome = ({ navigation }) => {
                                                 shadowOffset: { width: 3, height: 4 },
                                                 shadowOpacity: 0.8,
                                                 elevation: 9,
-                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 120
+                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 40
                                             }}
                                 />
                                 
@@ -217,8 +217,8 @@ const CasinoHome = ({ navigation }) => {
                                     <TouchableOpacity
                                         onPress={()=> handlAddHotel()}
                                         style={{width: 100, height: 40, borderWidth: 2, borderColor: '#e9c860', borderRadius: 15, alignItems: 'center', justifyContent: 'center'}}
-                                    >
-                                        <Text style={{color: '#e9c860', fontWeight: 'bold', fontSize: 18}}>Add</Text>
+                                    ><Text style={{color: '#e9c860',fontSize: 20}}>SAVE</Text>
+                                       {/**   <Entypo name='save' style={{ color: '#e9c860', fontSize: 35 }} />*/} 
                                     </TouchableOpacity>
                                 </View>
 
@@ -229,7 +229,7 @@ const CasinoHome = ({ navigation }) => {
                                 style={{ position: 'absolute', right: 10, top: 10 }}
                                 onPress={() => { closeModal() }}
                             >
-                                <Entypo name='circle-with-cross' style={{ color: '#e9c860', fontSize: 33 }} />
+                              <Entypo name='circle-with-cross' style={{ color: '#e9c860', fontSize: 33 }} />
                             </TouchableOpacity>
 
                         </View>

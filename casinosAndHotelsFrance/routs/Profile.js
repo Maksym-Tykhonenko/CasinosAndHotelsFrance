@@ -145,7 +145,7 @@ const Profile = () => {
         <View style={{ flex: 1, }}>
             <ImageBackground
                 style={{ flex: 1 }}
-                source={require('../accets/bgrImg.jpeg')}
+                source={require('../accets/backgr.jpg')}
             >
                 <ScrollView style={{ marginTop: 40, marginHorizontal: 20 }}>
                     <KeyboardAvoidingView
@@ -156,11 +156,11 @@ const Profile = () => {
 
                             {/**History Modal BTN */}
                             <TouchableOpacity
-                                style={{ position: 'absolute', right: 0, top: 100, flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#e9c860', borderRadius: 10, width: 120, height: 40, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#0c1e3b', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                style={{ position: 'absolute', right: 0, top: 100, flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#e9c860', borderRadius: 10, width: 50, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#000', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                 onPress={() => { setModalAddHotelsVisible(true) }}
                             >
-                                <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#e9c860' }}>My history</Text>
-                                           
+                                
+                                <FontAwesome5 name='history' style={{ color : '#e9c860', fontSize: 25}} />        
                             </TouchableOpacity>
 
 
@@ -235,6 +235,7 @@ const Profile = () => {
                                     
                                     {/** Add plases where i'm been block*/}
                                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: 250, marginBottom: 15 }}>
+                                        
                                         {/**  <TouchableOpacity
                                             style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 120, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#0c1e3b', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                         //onPress={() => setUserName(writingUsername)}
@@ -258,7 +259,7 @@ const Profile = () => {
 
                                         <TextInput
                                             placeholderTextColor='#3c5477'
-                                            placeholder="Name..."
+                                            placeholder="Casino name..."
                                             value={casinoName}
                                             onChangeText={setCasinoName}
                                             style={{
@@ -323,10 +324,10 @@ const Profile = () => {
 
                                         <View style={{ alignItems: 'center', width: 300 }}>
                                             <TouchableOpacity
-                                                style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 120, height: 40, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#0c1e3b', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                                style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 60, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#000', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                                 onPress={() => { handleAddToHistory() }}
                                             >
-                                                <Text style={{ fontWeight: 'bold', fontSize: 20, marginRight: 10, color: '#e9c860' }}>Save</Text>
+                                                <Entypo name='save' style={{ color: '#e9c860', fontSize: 35 }} />
                                            
                                             </TouchableOpacity>
                                         </View>
