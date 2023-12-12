@@ -126,7 +126,7 @@ const NewCasinoDitails = ({ navigation, route }) => {
                     style={{ flex: 1 }}
                     source={require('../accets/backgr.jpg')}
                 >
-                    <View style={{ flex: 1, borderRadius: 15, marginTop: 40, marginBottom: 30, marginHorizontal: 20, paddingHorizontal: 5, paddingVertical: 10, backgroundColor: 'rgba(233, 200, 96, 0.8)', shadowColor: '#e9c860', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}>
+                    <View style={{ flex: 1, borderRadius: 15, marginTop: 40, marginBottom: 30, marginHorizontal: 20, paddingHorizontal: 5, paddingVertical: 10, backgroundColor: 'rgba(0, 0, 0, 0.5)',  }}>
                             
                         <ScrollView>
                             <View style={{ padding: 10, paddingTop: 10 }}>
@@ -141,7 +141,7 @@ const NewCasinoDitails = ({ navigation, route }) => {
                                         style={{
                                             borderWidth: 2,
                                             borderRadius: 10,
-                                            borderColor: '#0c1e3b',
+                                            borderColor: '#e9c860',
                                             width: '100%',
                                             height: 200,
                                             justifyContent: "center",
@@ -153,7 +153,7 @@ const NewCasinoDitails = ({ navigation, route }) => {
                                             elevation: 9,
                                         }}
                                     >
-                                        <Text style={{ fontWeight: 'bold', fontSize: 17, color: '#0c1e3b' }}>+ add photo</Text>
+                                        <Text style={{ fontWeight: 'bold', fontSize: 17, color: '#e9c860' }}>+ add photo</Text>
                                     </TouchableOpacity>
                                         ) : (
                                                 <Image
@@ -166,10 +166,10 @@ const NewCasinoDitails = ({ navigation, route }) => {
                                     
                                 {/**Info block */}
                                 <View style={{ marginBottom: 15 }}>
-                                    <Text style={{ color: '#0c1e3b' }}><Text style={{ fontWeight: 'bold' }}>Hôtel: </Text>{hotel}</Text>
-                                    <Text style={{ color: '#0c1e3b' }}><Text style={{ fontWeight: 'bold' }}>Location: </Text>{location}</Text>
-                                    <Text style={{ color: '#0c1e3b' }}><Text style={{ fontWeight: 'bold' }}>Description: </Text>{description}</Text>
-                                    <Text style={{ color: '#0c1e3b' }}><Text style={{ fontWeight: 'bold' }}>Number of Rooms:</Text> Approximately {qwantityOfRooms} rooms</Text>
+                                    <Text style={{ color: '#e9c860' }}><Text style={{ fontWeight: 'bold' }}>Hôtel: </Text>{hotel}</Text>
+                                    <Text style={{ color: '#e9c860' }}><Text style={{ fontWeight: 'bold' }}>Location: </Text>{location}</Text>
+                                    <Text style={{ color: '#e9c860' }}><Text style={{ fontWeight: 'bold' }}>Description: </Text>{description}</Text>
+                                    <Text style={{ color: '#e9c860' }}><Text style={{ fontWeight: 'bold' }}>Number of Rooms:</Text> Approximately {qwantityOfRooms} rooms</Text>
                                     
                                 </View>
                              

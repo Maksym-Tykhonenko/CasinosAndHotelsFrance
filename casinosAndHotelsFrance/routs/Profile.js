@@ -197,15 +197,15 @@ const Profile = () => {
                             <View style={{ marginBottom: 15 }}>
 
                                
-                                <View style={{ flex: 1, backgroundColor: 'rgba(233, 200, 96, 0.8)', borderRadius: 15, padding: 10, shadowColor: '#e9c860', shadowOffset: { width: 2, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}>
+                                <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.4)', borderRadius: 15, padding: 10, }}>
                                     
                                     {/** NAME block*/}
                                     {!userName ? (
                                         <View>
-                                            <Text style={{ marginLeft: 5, marginBottom: 10, fontWeight: 'bold', fontSize: 25, color: '#0c1e3b' }}>Add name :</Text>
+                                            <Text style={{ marginLeft: 5, marginBottom: 10, fontWeight: 'bold', fontSize: 25, color: '#e9c860' }}>Add name :</Text>
                                             <View style={{ position: 'relative', width: 250 }}>
                                                 <TextInput
-                                                    placeholderTextColor='#3c5477'
+                                                    placeholderTextColor='#e9c860'
                                                     placeholder="Name..."
                                                     value={writingUsername}
                                                     onChangeText={setWritingUsername}
@@ -213,12 +213,12 @@ const Profile = () => {
                                                         shadowOffset: { width: 3, height: 4 },
                                                         shadowOpacity: .8,
                                                         elevation: 9,
-                                                        marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#0c1e3b', color: '#000', borderRadius: 10, width: 250, height: 40
+                                                        marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 40
                                                     }}
                                                 />
                                                 <TouchableOpacity
                                                     style={{
-                                                        position: 'absolute', right: 0, marginLeft: 4, borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#e9c860', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84,
+                                                        position: 'absolute', right: 0, marginLeft: 4, borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#e9c860', borderRadius: 10, width: 40, height: 40, justifyContent: 'center', alignItems: 'center',backgroundColor: '#000', 
                                                     }}
                                                     onPress={() => setUserName(writingUsername)}
                                                 >
@@ -258,7 +258,7 @@ const Profile = () => {
                                     <View>
 
                                         <TextInput
-                                            placeholderTextColor='#3c5477'
+                                            placeholderTextColor='rgba(233, 200, 96, 0.5)'
                                             placeholder="Casino name..."
                                             value={casinoName}
                                             onChangeText={setCasinoName}
@@ -266,12 +266,12 @@ const Profile = () => {
                                                 shadowOffset: { width: 3, height: 4 },
                                                 shadowOpacity: .8,
                                                 elevation: 9,
-                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#0c1e3b', color: '#0c1e3b', borderRadius: 10, width: 250, height: 40
+                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 40
                                             }}
                                         />
 
                                         <TextInput
-                                            placeholderTextColor='#3c5477'
+                                            placeholderTextColor='rgba(233, 200, 96, 0.5)'
                                             placeholder="Summa..."
                                             value={summa}
                                             onChangeText={setSumma}
@@ -280,7 +280,7 @@ const Profile = () => {
                                                 shadowOffset: { width: 3, height: 4 },
                                                 shadowOpacity: .8,
                                                 elevation: 9,
-                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#0c1e3b', color: '#0c1e3b', borderRadius: 10, width: 250, height: 40
+                                                marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 2, borderColor: '#e9c860', color: '#e9c860', borderRadius: 10, width: 250, height: 40
                                             }}
                                         />
 
@@ -294,9 +294,9 @@ const Profile = () => {
                                                 value={isEnabled}
                                             />
                                             {isEnabled ? (
-                                                <Text style={{ color: '#0c1e3b', fontSize: 25, marginLeft: 20 }}>win</Text>
+                                                <Text style={{ color: '#e9c860', fontSize: 25, marginLeft: 20 }}>win</Text>
                                             ) : (
-                                                <Text style={{ color: '#0c1e3b', fontSize: 25, marginLeft: 20 }}>lost</Text>
+                                                <Text style={{ color: '#e9c860', fontSize: 25, marginLeft: 20 }}>lost</Text>
                                             )}
                                         </View>
 
@@ -324,7 +324,7 @@ const Profile = () => {
 
                                         <View style={{ alignItems: 'center', width: 300 }}>
                                             <TouchableOpacity
-                                                style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#0c1e3b', borderRadius: 10, width: 60, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#000', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                                style={{ flexDirection: 'row', borderTopWidth: 2, borderRightWidth: 2, borderBottomWidth: 2, borderLeftWidth: 2, borderColor: '#e9c860', borderRadius: 10, width: 60, height: 50, justifyContent: 'center', alignItems: 'center', shadowColor: '#000', backgroundColor: '#000', shadowOffset: { width: 0, height: 2, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
                                                 onPress={() => { handleAddToHistory() }}
                                             >
                                                 <Entypo name='save' style={{ color: '#e9c860', fontSize: 35 }} />

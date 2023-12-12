@@ -100,10 +100,10 @@ const CasinoHome = ({ navigation }) => {
                                                 onPress={() => {
                                                     navigation.navigate('NewCasinoDitails', { hotel, qwantityOfRooms, location, description, })
                                                 }}
-                                                style={{ height: 50, backgroundColor: 'rgba(233, 200, 96, 0.8)', marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderRadius: 15, shadowColor: '#e9c860', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                                style={{ height: 50, backgroundColor: 'rgba(0, 0, 0, 0.3)',borderColor: '#e9c860',borderWidth: 1, marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderRadius: 15, }}
                                                 key={id}
                                             >
-                                                <Text style={{ color: '#081f41', fontWeight: 'bold', }}>{hotel}</Text>
+                                                <Text style={{ color: '#e9c860', fontWeight: 'bold', }}>{hotel}</Text>
                                             </TouchableOpacity>
                                         )
                                     })) : (
@@ -117,10 +117,10 @@ const CasinoHome = ({ navigation }) => {
                                                 onPress={() => {
                                                     navigation.navigate('CasinoDitails', { hotel, numberOfRooms, location, description, photo, latitude, longitude })
                                                 }}
-                                                style={{ height: 50, backgroundColor: 'rgba(233, 200, 96, 0.8)', marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderRadius: 15, shadowColor: '#e9c860', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}
+                                                style={{ height: 50, backgroundColor: 'rgba(0, 0, 0, 0.3)',borderColor: '#e9c860',borderWidth: 1, marginBottom: 10, alignItems: 'center', justifyContent: 'center', borderRadius: 15,  }}
                                                 key={id}
                                             >
-                                                <Text style={{ color: '#081f41', fontWeight: 'bold', }}>{hotel}</Text>
+                                                <Text style={{ color: '#e9c860', fontWeight: 'bold', }}>{hotel}</Text>
                                             </TouchableOpacity>
                                         )
                                     })}

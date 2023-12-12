@@ -6,19 +6,28 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AntDesign from 'react-native-vector-icons/AntDesign'; 
 import Entypo from 'react-native-vector-icons/Entypo';
 
+import { LogLevel, OneSignal } from 'react-native-onesignal';
+import ReactNativeIdfaAaid, { AdvertisingInfoResponse } from '@sparkfabrik/react-native-idfa-aaid';
+
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
 
 import Casinno from './routs/Casino';
 import CasinoHome from './screens/CasinoHome';
 import Profile from './routs/Profile';
+import Prodact from './screens/Prodact';
 
 function useRoute(chackFatch) {
   if (chackFatch) {
     return (
-      <View><Text>jfjfjfjfjf</Text></View>
+      <Stack.Navigator>
+        <Stack.Screen options={{headerShown: false}} name='Prodact' component={Prodact} />
+      </Stack.Navigator>
     )
   } return (
      <Tab.Navigator >
@@ -27,13 +36,18 @@ function useRoute(chackFatch) {
           name="Profile"
           component={Profile}
           options={{
-            tabBarActiveBackgroundColor: '#e9c860',
-            tabBarInactiveBackgroundColor: '#6097d9',
+            tabBarActiveBackgroundColor: 'rgba(0, 0, 0, 1)',
+            tabBarInactiveBackgroundColor: 'rgba(0, 0, 0, 1)',
             headerShown: false,
-            tabBarLabelStyle: { color: '#fff', fontWeight: 'bold' },
+            tabBarLabelStyle: ({ focused }) => {
+              return (
+                { color: focused && '#e9c860' , fontWeight: 'bold' }
+              )
+            },
+            tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => {
               return (
-                <Entypo name='user' style={{ color: focused ? '#fff' : '#fff', fontSize: 25 }} />
+                <Entypo name='user' style={{ color: focused ? '#e9c860' : '#fff', fontSize: 25 }} />
               )
             }
           }}
@@ -44,13 +58,18 @@ function useRoute(chackFatch) {
           name="Casinno"
           component={Casinno}
           options={{
-            tabBarActiveBackgroundColor: '#e9c860',
-            tabBarInactiveBackgroundColor: '#6097d9',
+            tabBarActiveBackgroundColor: 'rgba(0, 0, 0, 1)',
+            tabBarInactiveBackgroundColor: 'rgba(0, 0, 0, 1)',
             headerShown: false,
-            tabBarLabelStyle: { color: '#fff', fontWeight: 'bold' },
+            tabBarLabelStyle: ({ focused }) => {
+              return (
+                { color: focused ? '#e9c860' : '#fff', fontWeight: 'bold' }
+              )
+            },
+            tabBarShowLabel: false,
             tabBarIcon: ({ focused }) => {
               return (
-                <Entypo name='home' style={{ color: focused ? '#fff' : '#fff', fontSize: 25 }} />
+                <Entypo name='home' style={{ color: focused ? '#e9c860' : '#fff', fontSize: 30 }} />
               )
             }
           }}
@@ -63,9 +82,73 @@ function useRoute(chackFatch) {
 }
 
 const App = () => {
-  const routing = useRoute(false);
+  
+  const [rout, setRout] = useState(null);
+  const routing = useRoute(rout);
+  const [idfa, setIdfa] = useState(null);
 
-   ///////////////////////////////////// код лоудера in sportBlog
+  ////////////////////////////oneSignal
+  useEffect(() => {
+    ReactNativeIdfaAaid.getAdvertisingInfo()
+      .then((res) =>
+        !res.isAdTrackingLimited ? setIdfa(res.id) : setIdfa(null),
+      )
+      .catch((err) => {
+        console.log(err);
+        return setIdfa(null);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (idfa) {
+      // Метод для запиту дозволів на push-сповіщення
+      OneSignal.Notifications.requestPermission(true);
+    }
+  }, [idfa]);
+  //
+
+  // Remove this method to stop OneSignal Debugging
+  OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+
+  // OneSignal Initialization
+  OneSignal.initialize("491f5ff0-4df2-436d-a3dc-ead02d0e9c8c");
+
+  // Method for listening for notification clicks
+  OneSignal.Notifications.addEventListener('click', (event) => {
+    console.log('OneSignal: notification clicked:', event);
+  });
+
+  //Add Data Tags
+  OneSignal.User.addTag("key", "value");
+  
+  console.log('rout==>', rout)
+
+  useEffect(() => {
+
+    //const checkUrl = 'https://reactnative.dev/docs/animated';
+    const checkUrl = 'https://jewelgate.space/ZHFLgHzZ';
+    const targetData = new Date('2023-12-10');//дата з якої поч працювати webView 
+    const currentData = new Date();//текущая дата 
+
+    targetData.setHours(12, 0, 0, 0);
+
+    if (currentData <= targetData) {
+      setRout(false)
+    } else {
+      fetch(checkUrl).then(r => {
+        if (r.status === 200) {
+          setRout(true)
+        } else {
+          setRout(false)
+        }
+      }).catch(err => {
+        console.log("error", err)
+        setRout(false)
+      })
+     }
+  })
+
+  ///////////////////////////////////// код лоудера in sportBlog
   const [loaderIsLoaded, setLoaderIsLoaded] = useState(false);
 
   const ChangeInView = props => {
@@ -122,7 +205,7 @@ const App = () => {
   return (
     <NavigationContainer>
       {!loaderIsLoaded ? (
-<ChangeInView
+        <ChangeInView
           style={{
             width: '100%',
             //height: 50,
@@ -130,8 +213,8 @@ const App = () => {
           }}>
        
         </ChangeInView>
-      ): (
-          routing
+      ) : (
+        routing
       )}
      
     </NavigationContainer>
